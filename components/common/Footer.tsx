@@ -1,13 +1,12 @@
+import { Project } from "@/config";
 import {
   Box,
-  Divider,
   Icon,
   Link,
   Stack,
   Text,
-  useColorModeValue,
+  useColorModeValue
 } from "@interchain-ui/react";
-import { dependencies, products, Project } from "@/config";
 
 function Product({ name, desc, link }: Project) {
   return (
@@ -115,7 +114,7 @@ function Dependency({ name, desc, link }: Project) {
 export function Footer() {
   return (
     <>
-      <Box
+      {/* <Box
         display="grid"
         gridTemplateColumns={{
           tablet: "repeat(2, 1fr)",
@@ -137,24 +136,7 @@ export function Footer() {
         {dependencies.map((dependency) => (
           <Dependency key={dependency.name} {...dependency}></Dependency>
         ))}
-      </Box>
-      <Box mb="$6">
-        <Divider />
-      </Box>
-      <Stack
-        direction="horizontal"
-        space="$2"
-        attributes={{
-          justifyContent: "center",
-          opacity: 0.5,
-          fontSize: "$sm",
-        }}
-      >
-        <Text>Built with</Text>
-        <Link href="https://cosmology.zone/" target="_blank">
-          Cosmology
-        </Link>
-      </Stack>
+      </Box> */}
     </>
   );
 }

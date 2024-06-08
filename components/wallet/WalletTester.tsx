@@ -1,3 +1,5 @@
+import { getChainLogo } from "@/utils";
+import { useChain } from "@cosmos-kit/react";
 import {
   Box,
   ClipboardCopyText,
@@ -5,12 +7,7 @@ import {
   useColorModeValue,
 } from "@interchain-ui/react";
 import { WalletStatus } from "cosmos-kit";
-import { useChain } from "@cosmos-kit/react";
-import { getChainLogo } from "@/utils";
-import { CHAIN_NAME } from "@/config";
-import { User } from "./User";
 import { Chain } from "./Chain";
-import { Warning } from "./Warning";
 import {
   ButtonConnect,
   ButtonConnected,
@@ -20,8 +17,12 @@ import {
   ButtonNotExist,
   ButtonRejected,
 } from "./Connect";
+import { User } from "./User";
+import { Warning } from "./Warning";
 
-export function Wallet() {
+const CHAIN_NAME="nibiru";
+
+export function WalletTester() {
   const {
     chain,
     status,

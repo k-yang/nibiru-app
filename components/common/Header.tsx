@@ -1,13 +1,12 @@
+import { dependencies } from "@/config";
 import {
   Box,
   Button,
   Icon,
-  Link,
   Text,
   useColorModeValue,
-  useTheme,
+  useTheme
 } from "@interchain-ui/react";
-import { dependencies } from "@/config";
 
 const stacks = ["CosmosKit", "Next.js"];
 
@@ -44,34 +43,15 @@ export function Header() {
             marginBottom: "$8",
           }}
         >
-          Create Cosmos App
+          Playground Nibiru App
         </Text>
         <Text as="h2" fontWeight="$bold">
           <Text
             as="span"
             fontSize={{ mobile: "$3xl", tablet: "$8xl", desktop: "$8xl" }}
-          >
-            Welcome to&nbsp;
-          </Text>
-          <Text
-            as="span"
-            fontSize={{ mobile: "$3xl", tablet: "$8xl", desktop: "$8xl" }}
             color={useColorModeValue("$primary500", "$primary200")}
           >
-            {stacks.join(" + ")}
-            {" + "}
-
-            <Link
-              href={osmojs.name}
-              target="_blank"
-              rel="noreferrer"
-              attributes={{
-                color: useColorModeValue("$primary500", "$primary200"),
-                fontSize: { mobile: "$4xl", tablet: "$8xl", desktop: "$8xl" },
-              }}
-            >
-              {osmojs.name}
-            </Link>
+            Just playing around with Cosmos stack - Kevin Yang 
           </Text>
         </Text>
       </Box>

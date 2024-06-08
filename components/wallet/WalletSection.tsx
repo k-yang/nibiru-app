@@ -4,7 +4,7 @@ import { Box, Stack, useTheme } from '@interchain-ui/react';
 import { MouseEventHandler, useEffect, useMemo } from 'react';
 import { FiAlertTriangle } from 'react-icons/fi';
 
-import { defaultChainName } from '@/config';
+import { DEFAULT_CHAIN_NAME } from '@/config';
 import { ChainName } from 'cosmos-kit';
 import { ConnectedShowAddress, CopyAddressBtn } from './AddressCard';
 import { Astronaut } from './Astronaut';
@@ -44,15 +44,15 @@ export const WalletSection = ({
     message,
     wallet,
     chain: chainInfo,
-  } = useChain(providedChainName || defaultChainName);
+  } = useChain(providedChainName || DEFAULT_CHAIN_NAME);
 
   const { theme } = useTheme();
 
   const chain = {
-    chainName: defaultChainName,
+    chainName: DEFAULT_CHAIN_NAME,
     label: chainInfo.pretty_name,
-    value: defaultChainName,
-    icon: getChainLogo(defaultChainName),
+    value: DEFAULT_CHAIN_NAME,
+    icon: getChainLogo(DEFAULT_CHAIN_NAME),
   };
 
   const chainOptions = useMemo(
@@ -126,7 +126,7 @@ export const WalletSection = ({
 
   useEffect(() => {
     setChainName?.(
-      window.localStorage.getItem('selected-chain') || defaultChainName
+      window.localStorage.getItem('selected-chain') || DEFAULT_CHAIN_NAME
     );
   }, [setChainName]);
 
@@ -188,7 +188,7 @@ export const WalletSection = ({
         ) : (
           <Box marginBottom={'$9'}>
             <ChainCard
-              prettyName={chain?.label || defaultChainName}
+              prettyName={chain?.label || DEFAULT_CHAIN_NAME}
               icon={chain?.icon}
             />
           </Box>
