@@ -43,7 +43,7 @@ export function Header() {
             marginBottom: "$8",
           }}
         >
-          Playground Nibiru App
+          Unofficial Nibiru Webapp
         </Text>
         <Text as="h2" fontWeight="$bold">
           <Text
@@ -51,7 +51,7 @@ export function Header() {
             fontSize={{ mobile: "$3xl", tablet: "$8xl", desktop: "$8xl" }}
             color={useColorModeValue("$primary500", "$primary200")}
           >
-            Just playing around with Cosmos stack - Kevin Yang 
+            This webapp is an unofficial Nibiru webapp created by Kevin Yang for the purposes of learning and experimentation.
           </Text>
         </Text>
       </Box>

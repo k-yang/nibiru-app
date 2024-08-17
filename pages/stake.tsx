@@ -1,6 +1,6 @@
 import { Layout, StakingSection, WalletSection } from '@/components';
 import { Divider } from '@interchain-ui/react';
-import NoSSR from 'react-no-ssr';
+import { ReactNoSSR } from '@interchain-ui/react-no-ssr';
 
 export default function SingleChain() {
   return (
@@ -10,9 +10,9 @@ export default function SingleChain() {
       {/* TODO fix type error */}
       {/* Type error: This JSX tag's 'children' prop expects a single child of type 'ReactNode', but multiple children were provided. */}
       {/* @ts-ignore */}
-      <NoSSR>
-        <StakingSection chainName={"nibiru"} />
-      </NoSSR>
+      <ReactNoSSR>
+        <StakingSection chainName={DEFAULT_CHAIN_NAME} />
+      </ReactNoSSR>
     </Layout>
   );
 }

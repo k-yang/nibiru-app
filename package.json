@@ -21,6 +21,7 @@
     "@emotion/react": "11.10.6",
     "@emotion/styled": "11.10.6",
     "@interchain-ui/react": "^1.21.16",
+    "@interchain-ui/react-no-ssr": "^0.1.6",
     "@tanstack/react-query": "4.32.0",
     "chain-registry": "1.25.4",
     "cosmos-kit": "2.8.6",
@@ -41,5 +42,6 @@
     "eslint": "8.28.0",
     "eslint-config-next": "13.0.5",
     "typescript": "4.9.3"
-  }
+  },
+  "packageManager": "yarn@4.3.0+sha512.1606bef7c84bc7d83b8576063de2fd08f7d69f9939015bed800f9585a002390268ecc777e9feeba7e26e9556aef6beaad4806968db2182ab5dd3e955ab3b9a0b"
 }
