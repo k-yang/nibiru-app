@@ -48,7 +48,7 @@ export function Header() {
         <Text as="h2" fontWeight="$bold">
           <Text
             as="span"
-            fontSize={{ mobile: "$3xl", tablet: "$8xl", desktop: "$8xl" }}
+            fontSize={{ mobile: "$2xl", tablet: "$4xl", desktop: "$4xl" }}
             color={useColorModeValue("$primary500", "$primary200")}
           >
             This webapp is an unofficial Nibiru webapp created by Kevin Yang for the purposes of learning and experimentation.
