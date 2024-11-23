@@ -20,7 +20,7 @@ import {
 import { User } from "./User";
 import { Warning } from "./Warning";
 
-const CHAIN_NAME="nibiru";
+const CHAIN_NAME = "nibiru";
 
 export function WalletTester() {
   const {

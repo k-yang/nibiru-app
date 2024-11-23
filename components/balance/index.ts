@@ -1,3 +1,1 @@
-export * from './WalletSection';
-export * from './WalletTester';
-
+export * from './BalanceSection';
