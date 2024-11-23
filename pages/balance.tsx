@@ -1,15 +1,14 @@
-import { Layout, StakingSection, WalletTester } from "@/components";
-import { DEFAULT_CHAIN_NAME } from "@/config";
+import { BalanceSection, Layout, WalletTester } from "@/components";
 import { Divider } from "@interchain-ui/react";
-import { ReactNoSSR } from '@interchain-ui/react-no-ssr';
+import { ReactNoSSR } from "@interchain-ui/react-no-ssr";
 
-export default function Home() {
+export default function BalancePage() {
   return (
     <Layout>
       <WalletTester />
       <Divider height="0.1px" mt="$12" />
       <ReactNoSSR>
-        <StakingSection chainName={DEFAULT_CHAIN_NAME} />
+        <BalanceSection />
       </ReactNoSSR>
     </Layout>
   );
