@@ -1,19 +1,19 @@
-import { useState } from 'react';
+import { useChain } from '@cosmos-kit/react';
 import {
   Box,
   StakingAssetHeader,
   StakingClaimHeader,
 } from '@interchain-ui/react';
-import { useChain } from '@cosmos-kit/react';
 import { ChainName } from 'cosmos-kit';
 import { cosmos } from 'interchain-query';
+import { useState } from 'react';
 
 import { getCoin } from '@/config';
 import { Prices, useTx } from '@/hooks';
 import {
-  sum,
   calcDollarValue,
   isGreaterThanZero,
+  sum,
   type ParsedRewards as Rewards,
 } from '@/utils';
 
@@ -82,11 +82,11 @@ const Overview = ({
       <Box mb={{ mobile: '$12', tablet: '$14' }}>
         <StakingClaimHeader
           symbol={coin.symbol}
-          rewardsAmount={Number(rewards.total) || 0}
+          rewardsAmount={Number(rewards?.total || 0)}
           stakedAmount={Number(staked) || 0}
           onClaim={onClaimRewardClick}
           isLoading={isClaiming}
-          isDisabled={!isGreaterThanZero(rewards.total)}
+          isDisabled={!isGreaterThanZero(rewards?.total || 0)}
         />
       </Box>
     </>

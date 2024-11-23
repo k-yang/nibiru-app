@@ -1,17 +1,17 @@
+import type { Asset } from '@chain-registry/types';
+import { Coin } from '@cosmjs/stargate';
+import BigNumber from 'bignumber.js';
 import { QueryDelegationTotalRewardsResponse } from 'interchain-query/cosmos/distribution/v1beta1/query';
+import { QueryAnnualProvisionsResponse } from 'interchain-query/cosmos/mint/v1beta1/query';
+import {
+  QueryDelegatorDelegationsResponse,
+  QueryParamsResponse,
+} from 'interchain-query/cosmos/staking/v1beta1/query';
 import {
   Pool,
   Validator,
 } from 'interchain-query/cosmos/staking/v1beta1/staking';
 import { isGreaterThanZero, shiftDigits, toNumber } from '.';
-import { Coin, decodeCosmosSdkDecFromProto } from '@cosmjs/stargate';
-import {
-  QueryDelegatorDelegationsResponse,
-  QueryParamsResponse,
-} from 'interchain-query/cosmos/staking/v1beta1/query';
-import BigNumber from 'bignumber.js';
-import { QueryAnnualProvisionsResponse } from 'interchain-query/cosmos/mint/v1beta1/query';
-import type { Asset } from '@chain-registry/types';
 
 const DAY_TO_SECONDS = 24 * 60 * 60;
 const ZERO = '0';
@@ -110,8 +110,7 @@ const findAndDecodeReward = (
   exponent: number
 ) => {
   const amount = coins.find((coin) => coin.denom === denom)?.amount || ZERO;
-  const decodedAmount = decodeCosmosSdkDecFromProto(amount).toString();
-  return shiftDigits(decodedAmount, exponent);
+  return shiftDigits(Number(amount), exponent);
 };
 
 export type ParsedRewards = ReturnType<typeof parseRewards>;

@@ -9,29 +9,23 @@ import { ChainName } from 'cosmos-kit';
 import { ConnectedShowAddress, CopyAddressBtn } from './AddressCard';
 import { Astronaut } from './Astronaut';
 import { ChainCard } from './ChainCard';
-import { ChooseChain, ChooseChainProps } from './ChooseChain';
 import { UserInfo } from './UserInfo';
 import {
   Connected,
   Connecting,
-  ConnectWalletButton,
   Disconnected,
   Error,
   NotExist,
   Rejected,
-  WalletConnectComponent,
+  WalletConnectComponent
 } from './WalletConnect';
 import { ConnectStatusWarn, RejectedWarn } from './WarnBlock';
 
 export interface WalletSectionProps {
-  isMultiChain: boolean;
-  providedChainName?: ChainName;
   setChainName?: (chainName: ChainName | undefined) => void;
 }
 
 export const WalletSection = ({
-  isMultiChain,
-  providedChainName,
   setChainName,
 }: WalletSectionProps) => {
   const { chainRecords, getChainLogo } = useManager();
@@ -44,7 +38,7 @@ export const WalletSection = ({
     message,
     wallet,
     chain: chainInfo,
-  } = useChain(providedChainName || DEFAULT_CHAIN_NAME);
+  } = useChain(DEFAULT_CHAIN_NAME);
 
   const { theme } = useTheme();
 
@@ -130,24 +124,6 @@ export const WalletSection = ({
     );
   }, [setChainName]);
 
-  const onChainChange: ChooseChainProps['onChange'] = async (selectedValue) => {
-    if (!selectedValue) return;
-
-    if (selectedValue?.value) {
-      setChainName?.(selectedValue?.value);
-      window?.localStorage.setItem('selected-chain', selectedValue?.value);
-    } else {
-      window?.localStorage.removeItem('selected-chain');
-    }
-  };
-
-  const chooseChain = (
-    <ChooseChain
-      chainName={providedChainName}
-      chainInfos={chainOptions}
-      onChange={onChainChange}
-    />
-  );
 
   const userInfo = username && (
     <UserInfo username={username} icon={<Astronaut />} />
@@ -183,52 +159,45 @@ export const WalletSection = ({
         alignItems="center"
         justifyContent="center"
       >
-        {isMultiChain ? (
-          <Box>{chooseChain}</Box>
-        ) : (
-          <Box marginBottom={'$9'}>
-            <ChainCard
-              prettyName={chain?.label || DEFAULT_CHAIN_NAME}
-              icon={chain?.icon}
-            />
-          </Box>
-        )}
 
-        {!providedChainName && isMultiChain ? (
-          <ConnectWalletButton buttonText={'Connect Wallet'} isDisabled />
-        ) : (
-          <Box px={6}>
-            <Stack
-              direction="vertical"
-              attributes={{
-                px: '$2',
-                py: '$12',
-                justifyContent: 'center',
-                alignItems: 'center',
-                borderRadius: '$lg',
-                backgroundColor: theme === 'light' ? '$white' : '$cardBg',
-                boxShadow:
-                  theme === 'light'
-                    ? '0 0 2px #dfdfdf, 0 0 6px -2px #d3d3d3'
-                    : '0 0 2px #363636, 0 0 8px -2px #4f4f4f',
-              }}
-              space="$8"
+        <Box marginBottom={'$9'}>
+          <ChainCard
+            prettyName={chain?.label || DEFAULT_CHAIN_NAME}
+            icon={chain?.icon}
+          />
+        </Box>
+
+        <Box px={6}>
+          <Stack
+            direction="vertical"
+            attributes={{
+              px: '$2',
+              py: '$12',
+              justifyContent: 'center',
+              alignItems: 'center',
+              borderRadius: '$lg',
+              backgroundColor: theme === 'light' ? '$white' : '$cardBg',
+              boxShadow:
+                theme === 'light'
+                  ? '0 0 2px #dfdfdf, 0 0 6px -2px #d3d3d3'
+                  : '0 0 2px #363636, 0 0 8px -2px #4f4f4f',
+            }}
+            space="$8"
+          >
+            {userInfo}
+            {addressBtn}
+
+            <Box
+              width="100%"
+              maxWidth="200px"
+              attributes={{ id: 'connect-button' }}
             >
-              {userInfo}
-              {addressBtn}
+              {connectWalletButton}
+            </Box>
 
-              <Box
-                width="100%"
-                maxWidth="200px"
-                attributes={{ id: 'connect-button' }}
-              >
-                {connectWalletButton}
-              </Box>
-
-              {connectWalletWarn}
-            </Stack>
-          </Box>
-        )}
+            {connectWalletWarn}
+          </Stack>
+        </Box>
       </Box>
     </Box>
   );

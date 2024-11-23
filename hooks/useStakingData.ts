@@ -1,17 +1,15 @@
-import { useEffect, useMemo } from 'react';
 import { useChain } from '@cosmos-kit/react';
 import BigNumber from 'bignumber.js';
 import {
   cosmos,
+  createRpcQueryHooks,
   useRpcClient,
   useRpcEndpoint,
-  createRpcQueryHooks,
 } from 'interchain-query';
+import { useEffect, useMemo } from 'react';
 
-import { usePrices } from './usePrices';
 import { getCoin, getExponent } from '@/config';
 import {
-  shiftDigits,
   calcTotalDelegation,
   extendValidators,
   parseAnnualProvisions,
@@ -19,7 +17,9 @@ import {
   parseRewards,
   parseUnbondingDays,
   parseValidators,
+  shiftDigits,
 } from '@/utils';
+import { usePrices } from './usePrices';
 
 (BigInt.prototype as any).toJSON = function () {
   return this.toString();
@@ -32,7 +32,7 @@ export const useStakingData = (chainName: string) => {
   const exp = getExponent(chainName);
 
   const rpcEndpointQuery = useRpcEndpoint({
-    getter: getRpcEndpoint,
+    getter: () => Promise.resolve('https://rpc.nibiru.fi'),
     options: {
       enabled: !!address,
       staleTime: Infinity,

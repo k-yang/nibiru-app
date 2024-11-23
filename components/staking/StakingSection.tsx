@@ -1,19 +1,21 @@
 import { useChain } from '@cosmos-kit/react';
-import { ChainName } from 'cosmos-kit';
 import { Box, Spinner, Text } from '@interchain-ui/react';
 
-import Overview from './Overview';
-import { MyValidators } from './MyValidators';
-import { AllValidators } from './AllValidators';
+import { DEFAULT_CHAIN_NAME } from '@/config';
 import { useStakingData, useValidatorLogos } from '@/hooks';
+import { AllValidators } from './AllValidators';
+import { MyValidators } from './MyValidators';
+import Overview from './Overview';
 
-export const StakingSection = ({ chainName }: { chainName: ChainName }) => {
-  const { isWalletConnected } = useChain(chainName);
-  const { data, isLoading, refetch } = useStakingData(chainName);
+export const StakingSection = () => {
+  const { isWalletConnected } = useChain(DEFAULT_CHAIN_NAME);
+  const { data, isLoading, refetch } = useStakingData(DEFAULT_CHAIN_NAME);
   const { data: logos, isLoading: isFetchingLogos } = useValidatorLogos(
-    chainName,
+    DEFAULT_CHAIN_NAME,
     data?.allValidators || []
   );
+
+  console.log(data);
 
   return (
     <Box my="$16">
@@ -44,7 +46,7 @@ export const StakingSection = ({ chainName }: { chainName: ChainName }) => {
             rewards={data.rewards}
             staked={data.totalDelegated}
             updateData={refetch}
-            chainName={chainName}
+            chainName={DEFAULT_CHAIN_NAME}
             prices={data.prices}
           />
 
@@ -55,7 +57,7 @@ export const StakingSection = ({ chainName }: { chainName: ChainName }) => {
               balance={data.balance}
               updateData={refetch}
               unbondingDays={data.unbondingDays}
-              chainName={chainName}
+              chainName={DEFAULT_CHAIN_NAME}
               logos={logos}
               prices={data.prices}
             />
@@ -66,7 +68,7 @@ export const StakingSection = ({ chainName }: { chainName: ChainName }) => {
             validators={data.allValidators}
             updateData={refetch}
             unbondingDays={data.unbondingDays}
-            chainName={chainName}
+            chainName={DEFAULT_CHAIN_NAME}
             logos={logos}
             prices={data.prices}
           />
