@@ -23,7 +23,7 @@
     "@interchain-ui/react": "^1.21.16",
     "@interchain-ui/react-no-ssr": "^0.1.6",
     "@tanstack/react-query": "4.32.0",
-    "chain-registry": "1.25.4",
+    "chain-registry": "1.69.41",
     "cosmos-kit": "2.8.6",
     "framer-motion": "9.0.7",
     "interchain-query": "^1.10.7",
