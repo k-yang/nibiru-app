@@ -1,4 +1,3 @@
-import { dependencies } from "@/config";
 import {
   Box,
   Button,
@@ -7,10 +6,6 @@ import {
   useColorModeValue,
   useTheme
 } from "@interchain-ui/react";
-
-const stacks = ["CosmosKit", "Next.js"];
-
-const osmojs = dependencies[0];
 
 export function Header() {
   const { theme, setTheme } = useTheme();
@@ -43,15 +38,15 @@ export function Header() {
             marginBottom: "$8",
           }}
         >
-          Unofficial Nibiru Webapp
+          Kevin&apos;s Nibiru Webapp
         </Text>
-        <Text as="h2" fontWeight="$bold">
+        <Text as="h2">
           <Text
             as="span"
             fontSize={{ mobile: "$2xl", tablet: "$4xl", desktop: "$4xl" }}
             color={useColorModeValue("$primary500", "$primary200")}
           >
-            This webapp is an unofficial Nibiru webapp created by Kevin Yang for the purposes of learning and experimentation.
+            An unofficial Nibiru webapp created by Kevin Yang for learning and experimentation.
           </Text>
         </Text>
       </Box>
