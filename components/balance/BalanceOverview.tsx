@@ -36,7 +36,7 @@ const BalanceOverview = ({
           listTitle='On Nibiru'
           list={[
             {
-              imgSrc: coin.logo_URIs?.png || coin.logo_URIs?.svg || coin.logo_URIs?.jpeg || '',
+              imgSrc: coin.logo_URIs?.png || coin.logo_URIs?.svg || '',
               symbol: coin.symbol,
               name: coin.name,
               tokenAmount: balance,
