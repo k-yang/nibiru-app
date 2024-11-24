@@ -16,6 +16,7 @@ import {
   useColorModeValue,
   useTheme,
 } from '@interchain-ui/react';
+import '@interchain-ui/react/globalStyles';
 import '@interchain-ui/react/styles';
 
 function CreateCosmosApp({ Component, pageProps }: AppProps) {
