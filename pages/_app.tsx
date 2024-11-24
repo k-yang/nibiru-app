@@ -1,5 +1,3 @@
-import '@interchain-ui/react/globalStyles';
-import '@interchain-ui/react/styles';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import type { AppProps } from 'next/app';
@@ -12,11 +10,13 @@ import { SignerOptions, wallets } from 'cosmos-kit';
 
 import {
   Box,
+  OverlaysManager,
   ThemeProvider,
   Toaster,
   useColorModeValue,
   useTheme,
 } from '@interchain-ui/react';
+import '@interchain-ui/react/styles';
 
 function CreateCosmosApp({ Component, pageProps }: AppProps) {
   const { themeClass } = useTheme();
@@ -79,6 +79,7 @@ function CreateCosmosApp({ Component, pageProps }: AppProps) {
             {/* @ts-ignore */}
             <Component {...pageProps} />
             <Toaster position="top-right" closeButton={true} />
+            <OverlaysManager />
           </Box>
           {/* <ReactQueryDevtools /> */}
         </QueryClientProvider>
