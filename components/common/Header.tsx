@@ -46,7 +46,7 @@ export function Header() {
             fontSize={{ mobile: "$2xl", tablet: "$4xl", desktop: "$4xl" }}
             color={useColorModeValue("$primary500", "$primary200")}
           >
-            An unofficial Nibiru webapp created by Kevin Yang for learning and experimentation.
+            An unofficial webapp created for learning and experimentation.
           </Text>
         </Text>
       </Box>
