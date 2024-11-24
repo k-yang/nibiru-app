@@ -1,4 +1,3 @@
-
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import type { AppProps } from 'next/app';
 // import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
@@ -16,8 +15,8 @@ import {
   useColorModeValue,
   useTheme,
 } from '@interchain-ui/react';
-import '@interchain-ui/react/globalStyles';
 import '@interchain-ui/react/styles';
+import '../public/globals.css';
 
 function CreateCosmosApp({ Component, pageProps }: AppProps) {
   const { themeClass } = useTheme();
