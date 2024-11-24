@@ -2,6 +2,7 @@ import {
   Box,
   Button,
   Icon,
+  Link,
   Text,
   useColorModeValue,
   useTheme
@@ -16,13 +17,40 @@ export function Header() {
 
   return (
     <>
-      <Box display="flex" justifyContent="end" mb="$8">
+      <Box display="flex" justifyContent="space-between" mb="$8">
+        <Box display="flex" gap={"$12"}>
+          <Box
+            backgroundColor={useColorModeValue("$primary100", "$primary900")}
+            paddingX={"$8"}
+            paddingY={"$4"}
+            borderRadius={"$2xl"}
+          >
+            <Link href="/balance">
+              <Text
+                color={useColorModeValue("$primary900", "$primary100")}
+              >
+                Balance
+              </Text>
+            </Link>
+          </Box>
+          <Box
+            backgroundColor={useColorModeValue("$primary100", "$primary900")}
+            paddingX={"$8"}
+            paddingY={"$4"}
+            borderRadius={"$2xl"}
+          >
+            <Link href="/stake">
+              <Text
+                color={useColorModeValue("$primary900", "$primary100")}
+              >
+                Stake
+              </Text>
+            </Link>
+          </Box>
+        </Box>
         <Button
           intent="secondary"
           size="sm"
-          attributes={{
-            paddingX: 0,
-          }}
           onClick={toggleColorMode}
         >
           <Icon name={useColorModeValue("moonLine", "sunLine")} />
@@ -32,21 +60,17 @@ export function Header() {
       <Box textAlign="center">
         <Text
           as="h1"
-          fontWeight="$extrabold"
+          fontWeight="$bold"
           fontSize={{ mobile: "$6xl", tablet: "$10xl" }}
-          attributes={{
-            marginBottom: "$8",
-          }}
         >
-          Kevin&apos;s Nibiru Webapp
+          Kevin&apos;s Unofficial Nibiru Webapp
         </Text>
         <Text as="h2">
           <Text
-            as="span"
-            fontSize={{ mobile: "$2xl", tablet: "$4xl", desktop: "$4xl" }}
+            as="p"
             color={useColorModeValue("$primary500", "$primary200")}
           >
-            An unofficial webapp created for learning and experimentation.
+            Created for learning and experimentation.
           </Text>
         </Text>
       </Box>
