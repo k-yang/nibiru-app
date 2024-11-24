@@ -47,7 +47,7 @@ export function WalletTester() {
     <Box py="$16">
       <Stack attributes={{ mb: "$12", justifyContent: "center" }}>
         <Chain
-          name={chain.pretty_name}
+          name={chain.pretty_name || "Nibiru Chain"}
           logo={getChainLogo(chain.chain_name)!}
         />
       </Stack>
