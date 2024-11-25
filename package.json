@@ -27,6 +27,7 @@
     "chain-registry": "1.69.41",
     "cosmos-kit": "2.21.1",
     "framer-motion": "9.0.7",
+    "interchain": "^1.10.4",
     "interchain-query": "^1.10.7",
     "match-sorter": "^6.3.4",
     "next": "^13",

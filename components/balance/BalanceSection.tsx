@@ -1,6 +1,7 @@
 import { useChain } from '@cosmos-kit/react';
 import { Box, Spinner, Text } from '@interchain-ui/react';
 
+
 import { DEFAULT_CHAIN_NAME } from '@/config';
 import { useBankData } from '@/hooks';
 import BalanceOverview from './BalanceOverview';
@@ -33,7 +34,7 @@ export const BalanceSection = () => {
         </Box>
       ) : (
         <BalanceOverview
-          balance={data.balance}
+          balances={data.allBalances}
           chainName={DEFAULT_CHAIN_NAME}
           prices={data.prices}
         />

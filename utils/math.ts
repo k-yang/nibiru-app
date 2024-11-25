@@ -31,7 +31,11 @@ export const calcDollarValue = (
   amount: string | number,
   prices: Prices
 ) => {
-  return new BigNumber(prices[denom] || 0)
+  if (!prices[denom]) return 0;
+
+
+
+  return new BigNumber(prices[denom])
     .times(amount)
     .decimalPlaces(2)
     .toNumber();

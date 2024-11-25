@@ -16,6 +16,7 @@ import { usePrices } from './usePrices';
   return this.toString();
 };
 
+
 export const useBankData = () => {
   const { address, getRpcEndpoint } = useChain(DEFAULT_CHAIN_NAME);
 
@@ -23,7 +24,7 @@ export const useBankData = () => {
   const exp = getExponent(DEFAULT_CHAIN_NAME);
 
   const rpcEndpointQuery = useRpcEndpoint({
-    getter: getRpcEndpoint,
+    getter: () => Promise.resolve("https://rpc.nibiru.fi"),
     options: {
       enabled: !!address,
       staleTime: Infinity,
@@ -41,7 +42,7 @@ export const useBankData = () => {
     },
   });
 
-  const { cosmos: cosmosQuery } = createRpcQueryHooks({
+  const { cosmos: cosmosQuery, cosmwasm: cosmwasmQuery } = createRpcQueryHooks({
     rpc: rpcClientQuery.data,
   });
 
@@ -58,15 +59,30 @@ export const useBankData = () => {
     },
   });
 
+  const allBalancesQuery = cosmosQuery.bank.v1beta1.useAllBalances({
+    request: {
+      address: address || '',
+    },
+    options: {
+      enabled: isDataQueryEnabled,
+      select: ({ balances }) => balances.map(({ amount, denom }) => ({
+        amount: shiftDigits(amount, -exp),
+        denom,
+      })),
+    },
+  });
+
   const pricesQuery = usePrices();
 
   const allQueries = {
     balance: balanceQuery,
+    allBalances: allBalancesQuery,
     prices: pricesQuery,
   };
 
   const updatableQueriesAfterMutation = [
     allQueries.balance,
+    allQueries.allBalances,
   ];
 
   const isInitialFetching = Object.values(allQueries).some(
@@ -90,7 +106,6 @@ export const useBankData = () => {
     const queriesData = Object.fromEntries(
       Object.entries(allQueries).map(([key, query]) => [key, query.data])
     ) as QueriesData;
-
 
     return queriesData;
     // eslint-disable-next-line react-hooks/exhaustive-deps

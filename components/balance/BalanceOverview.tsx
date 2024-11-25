@@ -1,10 +1,11 @@
 import {
   Box,
-  SingleChain
+  SingleChain,
+  SingleChainListItemProps
 } from '@interchain-ui/react';
 import { ChainName } from 'cosmos-kit';
 
-import { getCoin } from '@/config';
+import { getChainAssets } from '@/config';
 import { Prices } from '@/hooks';
 import {
   calcDollarValue
@@ -12,15 +13,35 @@ import {
 
 
 const BalanceOverview = ({
-  balance,
+  balances,
   chainName,
   prices,
 }: {
-  balance: string;
+  balances: {
+    amount: string;
+    denom: string;
+  }[];
   chainName: ChainName;
   prices: Prices;
 }) => {
-  const coin = getCoin(chainName);
+
+  const totalValue = balances.reduce((acc, { amount, denom }) => {
+    return acc + calcDollarValue(denom, amount, prices);
+  }, 0);
+
+  const assetList = getChainAssets(chainName);
+  const displayList: SingleChainListItemProps[] = balances.map(({ amount, denom }) => {
+    const asset = assetList.assets.find(({ base }) => base === denom);
+    return {
+      imgSrc: asset?.logo_URIs?.png || asset?.logo_URIs?.svg || '',
+      symbol: asset?.symbol || denom,
+      name: asset?.name || denom,
+      tokenAmount: amount,
+      tokenAmountPrice: "$" + calcDollarValue(denom, amount, prices).toString(),
+      showDeposit: false,
+      showWithdraw: false,
+    }
+  })
 
   return (
     <>
@@ -29,22 +50,12 @@ const BalanceOverview = ({
           title='My Assets'
           singleChainHeader={{
             label: 'Total on Nibiru',
-            value: calcDollarValue(coin.base, balance, prices).toString(),
+            value: totalValue.toString(),
           }}
           showDeposit={false}
           showWithdraw={false}
           listTitle='On Nibiru'
-          list={[
-            {
-              imgSrc: coin.logo_URIs?.png || coin.logo_URIs?.svg || '',
-              symbol: coin.symbol,
-              name: coin.name,
-              tokenAmount: balance,
-              tokenAmountPrice: "$" + calcDollarValue(coin.base, balance, prices).toString(),
-              showDeposit: false,
-              showWithdraw: false,
-            },
-          ]}
+          list={displayList}
         />
       </Box>
     </>

@@ -1,6 +1,6 @@
-import { assets } from 'chain-registry';
-import { useQuery } from '@tanstack/react-query';
 import { AssetList } from '@chain-registry/types';
+import { useQuery } from '@tanstack/react-query';
+import { assets } from 'chain-registry';
 
 type CoinGeckoId = string;
 type CoinGeckoUSD = { usd: number };
@@ -47,7 +47,15 @@ export const usePrices = () => {
   return useQuery({
     queryKey: ['prices'],
     queryFn: () => fetchPrices(geckoIds),
-    select: (data) => formatPrices(data, assets),
+    select: (data) => {
+      const formattedPrices = formatPrices(data, assets);
+      console.log(formattedPrices);
+      return {
+        ...formattedPrices,
+        'tf/nibi1udqqx30cw8nwjxtl4l28ym9hhrp933zlq8dqxfjzcdhvl8y24zcqpzmh8m/ampNIBI': formattedPrices['unibi'] * 1.085,
+        'ibc/F082B65C88E4B6D5EF1DB243CDA1D331D002759E938A0F5CD3FFDC5D53B3E349': 1,
+      }
+    },
     staleTime: Infinity,
   });
 };

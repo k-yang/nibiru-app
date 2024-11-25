@@ -835,6 +835,7 @@ __metadata:
     eslint: "npm:8.28.0"
     eslint-config-next: "npm:13.0.5"
     framer-motion: "npm:9.0.7"
+    interchain: "npm:^1.10.4"
     interchain-query: "npm:^1.10.7"
     match-sorter: "npm:^6.3.4"
     next: "npm:^13"
@@ -845,6 +846,15 @@ __metadata:
     typescript: "npm:4.9.3"
   languageName: unknown
   linkType: soft
+
+"@cosmology/lcd@npm:^0.13.3":
+  version: 0.13.5
+  resolution: "@cosmology/lcd@npm:0.13.5"
+  dependencies:
+    axios: "npm:1.7.4"
+  checksum: 10c0/c862cb2d33f3d470ff07ac48f1b9c7ea437be1dd4e99cf238056e28fec1f6a1925d7241ce983ee4560bdaa501bdb289842ba9526757d34d07967730b07ee6953
+  languageName: node
+  linkType: hard
 
 "@cosmos-kit/cdcwallet-extension@npm:^2.15.1":
   version: 2.15.1
@@ -5677,6 +5687,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"axios@npm:1.7.4":
+  version: 1.7.4
+  resolution: "axios@npm:1.7.4"
+  dependencies:
+    follow-redirects: "npm:^1.15.6"
+    form-data: "npm:^4.0.0"
+    proxy-from-env: "npm:^1.1.0"
+  checksum: 10c0/5ea1a93140ca1d49db25ef8e1bd8cfc59da6f9220159a944168860ad15a2743ea21c5df2967795acb15cbe81362f5b157fdebbea39d53117ca27658bab9f7f17
+  languageName: node
+  linkType: hard
+
 "axios@npm:^0.21.2":
   version: 0.21.4
   resolution: "axios@npm:0.21.4"
@@ -8080,6 +8101,19 @@ __metadata:
   peerDependencies:
     "@tanstack/react-query": ^4.29.12
   checksum: 10c0/f5b6f4525a3a59b2d50face8081934db18142e2063ce9d9380a99a6044e297248f408b6600ad12a3af0bb9975d0cd65e700cae2d9a20c14b3dc87339a92d296a
+  languageName: node
+  linkType: hard
+
+"interchain@npm:^1.10.4":
+  version: 1.10.4
+  resolution: "interchain@npm:1.10.4"
+  dependencies:
+    "@cosmjs/amino": "npm:0.32.2"
+    "@cosmjs/proto-signing": "npm:0.32.2"
+    "@cosmjs/stargate": "npm:0.32.2"
+    "@cosmjs/tendermint-rpc": "npm:0.32.2"
+    "@cosmology/lcd": "npm:^0.13.3"
+  checksum: 10c0/c03ee8e99c152a26f2afd1e2b2cd7deeb3e3286bfb1be46516767cda70147c88459451a7ab8ba94f95e1b00fd7cfcda536eecedd149dcd970f14b51fd1fba62a
   languageName: node
   linkType: hard
 
