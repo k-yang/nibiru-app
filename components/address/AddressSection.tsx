@@ -160,12 +160,19 @@ const AddressSection = () => {
     <>
       <Box display="flex" flexDirection={'column'} gap="$8">
         <Text fontSize="$2xl" fontWeight="$bold" color="$red200" textAlign={'center'}>Address Converter</Text>
+        <Text fontSize={"$lg"} color="$gray300" textAlign={'left'}>
+          A tool for converting between Ethereum and Cosmos addresses.
+          The mnemonic and private key inputs are optional.
+          There&apos;s no need to input a mnemonic and/or private key into a public website if you don&apos;t trust it.
+          The tool works with just a public key input. The tool also works with just an address input, but it will only derive one side (Ethereum or Cosmos), not both.
+          Also, the code for this website is open source and <a href="https://github.com/k-yang/nibiru-app">available on Github</a>.
+        </Text>
         <Text color="$red500" textAlign={'center'} fontSize={'$xl'} fontWeight={"$semibold"}>{state.errorText}</Text>
 
-        <Text fontSize="$lg" fontWeight="$semibold">Mnemonic</Text>
+        <Text fontSize="$lg" fontWeight="$semibold">Mnemonic (optional)</Text>
         <TextField value={state.mnemonic} id="mnemonic" onChange={(e) => dispatch({ type: 'update_mnemonic', value: e.target.value })} />
 
-        <Text fontSize="$lg" fontWeight="$semibold">Private Key</Text>
+        <Text fontSize="$lg" fontWeight="$semibold">Private Key (optional)</Text>
         <TextField value={state.privateKey} id="private key" onChange={(e) => dispatch({ type: 'update_private_key', value: e.target.value })} />
 
         <Text fontSize="$lg" fontWeight="$semibold">Public Key</Text>
