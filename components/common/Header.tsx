@@ -57,7 +57,7 @@ export function Header() {
               <Text
                 color={useColorModeValue("$primary900", "$primary100")}
               >
-                Stake
+                Address Converter
               </Text>
             </Link>
           </Box>
