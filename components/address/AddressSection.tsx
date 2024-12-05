@@ -199,7 +199,7 @@ function reducer(state: State, action: ReducerAction): State {
 const AddressSection = () => {
   const [state, dispatch] = useReducer(reducer, {
     mnemonic: '',
-    hdPath: 'm/44&apos;/118&apos;/0&apos;/0/0',
+    hdPath: "m/44'/118'/0'/0/0",
     accountPrefix: 'nibi',
     privateKey: '',
     publicKey: '',
