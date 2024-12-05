@@ -47,6 +47,20 @@ export function Header() {
               </Text>
             </Link>
           </Box>
+          <Box
+            backgroundColor={useColorModeValue("$primary100", "$primary900")}
+            paddingX={"$8"}
+            paddingY={"$4"}
+            borderRadius={"$2xl"}
+          >
+            <Link href="/address">
+              <Text
+                color={useColorModeValue("$primary900", "$primary100")}
+              >
+                Stake
+              </Text>
+            </Link>
+          </Box>
         </Box>
         <Button
           intent="secondary"
