@@ -199,7 +199,7 @@ function reducer(state: State, action: ReducerAction): State {
 const AddressSection = () => {
   const [state, dispatch] = useReducer(reducer, {
     mnemonic: '',
-    hdPath: 'm/44\'/118\'/0\'/0/0',
+    hdPath: 'm/44&apos;/118&apos;/0&apos;/0/0',
     accountPrefix: 'nibi',
     privateKey: '',
     publicKey: '',
@@ -253,12 +253,12 @@ const AddressSection = () => {
         <Box display="flex" gap="$16">
           <Box display="flex" gap="$8" flexDirection={'column'} width={'50%'}>
             <Text fontSize="$lg" fontWeight="$semibold">HD Path</Text>
-            <Text fontSize="$sm" color="$gray500">Advanced, only use if you know what you're doing. This is the path to the account in the HD wallet. The default for Nibiru Chain is m/44'/118'/0'/0/0. Ethereum uses m/44'/60'/0'/0/0.</Text>
+            <Text fontSize="$sm" color="$gray500">Advanced, only use if you know what you&apos;re doing. This is the path to the account in the HD wallet. The default for Nibiru Chain is m/44&apos;/118&apos;/0&apos;/0/0. Ethereum uses m/44&apos;/60&apos;/0&apos;/0/0.</Text>
             <TextField value={state.hdPath} id="hd path" onChange={(e) => dispatch({ type: 'update_hd_path', value: e.target.value })} />
           </Box>
           <Box display="flex" flexDirection={'column'} gap="$8" width={'50%'}>
             <Text fontSize="$lg" fontWeight="$semibold">Account Prefix</Text>
-            <Text fontSize="$sm" color="$gray500">Advanced, only use if you know what you're doing. This is the prefix for the accoutn address. The default for Nibiru Chain is nibi. Cosmoshub uses cosmos.</Text>
+            <Text fontSize="$sm" color="$gray500">Advanced, only use if you know what you&apos;re doing. This is the prefix for the accoutn address. The default for Nibiru Chain is nibi. Cosmoshub uses cosmos.</Text>
             <TextField value={state.accountPrefix} id="account prefix" onChange={(e) => dispatch({ type: 'update_account_prefix', value: e.target.value })} />
           </Box>
         </Box>
